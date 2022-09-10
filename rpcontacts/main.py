@@ -1,7 +1,7 @@
 import sys
 from PyQt5.QtWidgets import QApplication
 from rpcontacts.views import Window
-from database import createConnection
+from rpcontacts.database import createConnection
 
 
 def main():

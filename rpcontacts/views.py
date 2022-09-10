@@ -7,12 +7,11 @@ from PyQt5.QtWidgets import (
     QVBoxLayout,
     QWidget,
 )
+from rpcontacts.model import ContactsModel
 
 
 class Window(QMainWindow):
-    """Main Window."""
     def __init__(self, parent=None):
-        """Initializer."""
         super().__init__(parent)
         self.setWindowTitle("Записная книжка")
         self.resize(550, 250)
@@ -20,10 +19,12 @@ class Window(QMainWindow):
         self.setCentralWidget(self.centralWidget)
         self.layout = QHBoxLayout()
         self.centralWidget.setLayout(self.layout)
+        self.contactsModel = ContactsModel()
         self.setupUI()
 
     def setupUI(self):
         self.table = QTableView()
+        self.table.setModel(self.contactsModel.model)
         self.table.setSelectionBehavior(QAbstractItemView.SelectRows)
         self.table.resizeColumnsToContents()
         self.addButton = QPushButton("Добавить")
